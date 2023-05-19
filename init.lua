@@ -1,3 +1,14 @@
+if vim.g.neovide then
+  vim.o.guifont = "Jetbrains Mono:h14"    -- Put anything you want to happen only in Neovide here
+  vim.g.neovide_padding_top = 100
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_padding_left = 0
+vim.g.neovide_cursor_animation_length = 0.07
+  vim.g.neovide_hide_mouse_when_typing = true
+vim.g.neovide_scroll_animation_length = 0.1
+end
+
 return {
   -- Configure AstroNvim updates
   updater = {

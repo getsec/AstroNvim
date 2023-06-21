@@ -1,12 +1,13 @@
 if vim.g.neovide then
-  vim.o.guifont = "Jetbrains Mono:h14"    -- Put anything you want to happen only in Neovide here
-  vim.g.neovide_padding_top = 100
+  vim.o.guifont = "Hack:h14"
+  vim.g.neovide_refresh_rate = 144-- Put anything you want to happen only in Neovide here
+  vim.g.neovide_padding_top = 0
   vim.g.neovide_padding_bottom = 0
   vim.g.neovide_padding_right = 0
   vim.g.neovide_padding_left = 0
-vim.g.neovide_cursor_animation_length = 0.07
+  vim.g.neovide_cursor_animation_length = 0.07
   vim.g.neovide_hide_mouse_when_typing = true
-vim.g.neovide_scroll_animation_length = 0.1
+  vim.g.neovide_scroll_animation_length = 0.1
 end
 
 return {
@@ -80,6 +81,20 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
+    local map = vim.keymap.set
+    local set = vim.opt
+    -- Set options
+    set.relativenumber = true
+
+    vim.api.nvim_create_augroup("MyGroup", {})
+    vim.api.nvim_create_autocmd({"BufEnter", "BufRead", "BufNewFile"}, {
+      desc   = "Set Jenkinsfile to Groovy syntax",
+      pattern = "Jenkinsfile",
+      command = [[set syntax=groovy]],
+      group = "MyGroup"
+    })
+
+
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {

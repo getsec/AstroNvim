@@ -1,13 +1,18 @@
 if vim.g.neovide then
-  vim.o.guifont = "Hack:h14"
-  vim.g.neovide_refresh_rate = 144-- Put anything you want to happen only in Neovide here
+  vim.o.guifont = "Jetbrains mono"
   vim.g.neovide_padding_top = 0
   vim.g.neovide_padding_bottom = 0
   vim.g.neovide_padding_right = 0
   vim.g.neovide_padding_left = 0
-  vim.g.neovide_cursor_animation_length = 0.07
-  vim.g.neovide_hide_mouse_when_typing = true
-  vim.g.neovide_scroll_animation_length = 0.1
+  -- allow copy pasting kemaps
+  vim.g.neovide_cursor_vfx_mode = "railgun"
+
+  -- remap copy
+  vim.opt.termguicolors = true
+  -- set term colors
+  -- lua command to enable termcolors
+
+  
 end
 
 return {
@@ -30,7 +35,7 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "gruvbox",
+  colorscheme = "catppuccin",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -93,6 +98,7 @@ return {
       command = [[set syntax=groovy]],
       group = "MyGroup"
     })
+
 
 
     -- Set up custom filetypes

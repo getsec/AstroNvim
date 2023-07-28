@@ -69,6 +69,15 @@ return {
     servers = {
       -- "pyright"
     },
+    config = {
+      pyright = {
+        single_filesupport = false,
+        analysis = {
+          diagnosticMode = "workspace",
+          typeCheckingMode = "strict"
+        }
+      },
+    },
   },
 
   -- Configure require("lazy").setup() options

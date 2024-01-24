@@ -1,9 +1,7 @@
 return {
-  "navarasu/onedark.nvim",
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
   {"nvim-lua/plenary.nvim"},
-  { import = "astrocommunity.diagnostics.trouble-nvim"},
   { import = "astrocommunity.completion.copilot-lua" },
   { -- further customize the options set by the community
     "copilot.lua",
@@ -20,15 +18,24 @@ return {
       },
     },
   },
-  { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
-  {
-    "m4xshen/smartcolumn.nvim",
-    opts = {
-      colorcolumn = 120,
-      disabled_filetypes = { "help" },
-    },
+{
+  'linux-cultist/venv-selector.nvim',
+  dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+  opts = {
+    name = ".venv",
+    auto_refresh = true
+    -- Your options go here
+    -- name = "venv",
+    -- auto_refresh = false
   },
-  {"vim-terraform"},
-{"rebelot/kanagawa.nvim"}
+  event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+  keys = {
+    -- Keymap to open VenvSelector to pick a venv.
+    { '<leader>vs', '<cmd>VenvSelect<cr>' },
+    -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+    { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
+  }
+},
+-- {"rebelot/kanagawa.nvim"}
 }
 

@@ -36,7 +36,6 @@ return {
 
   -- Set colorscheme to use
   colorscheme = "kanagawa",
-
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
@@ -46,7 +45,7 @@ return {
   lsp = {
     -- customize lsp formatting options
     formatting = {
-      -- control auto formatting on save
+      -- control auto formatting on sav:Me
       format_on_save = {
         enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
@@ -60,7 +59,7 @@ return {
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
       },
-      timeout_ms = 1000, -- default format timeout
+      timeout_ms = 10000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
       --   return true
       -- end
@@ -100,27 +99,17 @@ return {
     -- Set options
     set.relativenumber = true
 
-    vim.api.nvim_create_augroup("MyGroup", {})
-    vim.api.nvim_create_autocmd({"BufEnter", "BufRead", "BufNewFile"}, {
-      desc   = "Set Jenkinsfile to Groovy syntax",
-      pattern = "Jenkinsfile",
-      command = [[set syntax=groovy]],
-      group = "MyGroup"
-    })
-
-
-
-    -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
+    vim.filetype.add {
+      extension = {
+        envsubst = "yaml",
+        tfvars = "terraform",
+        hcl = "terraform",
+        tf =  "terraform",
+      }
+  }
+    --    filename = {
+    --     ["Jenkinsfile"] = "groovy"
+    --   }
     -- }
   end,
 }
